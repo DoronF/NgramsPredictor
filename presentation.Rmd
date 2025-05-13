@@ -1,0 +1,80 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis]
+---
+
+# Stochastic N-gram Word Predictor
+
+## Purpose:
+This Shiny app provides next-word prediction using an n-gram model with 
+Kneser-Ney smoothing.
+
+## Features:
+- User-friendly interface for text input.
+- Real-time of up to 15 next-word suggestions.
+- Display of prediction probabilities and n-gram sources.
+- Dynamic indication of prediction reliability.
+- **Stats** and details about n-grams **Dataset**, **Model** and **Markov Chain**.
+---
+
+# Key Components
+
+## 1. N-gram Model
+- N-grams are generated from 100,000 sentences sampled equally from:<br />
+**Twitter** (informal), **Blogs** (natural), **News** (formal).
+- Uses a **Kneser-Ney** smoothed n-grams database stored in SQLite.
+
+## 2. Predictive Algorithm
+- The prediction function returns the top predicted words, along with 
+<br />probabilities and sources (e.g., bigram, trigram, fallback).
+
+## 3. Reliability Indication
+- Reliability of prediction is determined by comparing perplexity and entropy levels.
+
+---
+
+# Shiny App Interface
+
+### Sidebar
+- **Numeric Input**: For setting the number of returned predictions.
+- **How To**: Simple instruction.
+
+### Main panel
+- **Text Input**: For users to enter text.
+- **Submit Button**: For submitting the input text.
+
+### Tabs
+- **Prediction Tab**: Displays top word predictions and reliability indication.
+- **Stats Tab**: Shows perplexity entropy and other performance metrics.
+- **Dataset Tab**: Describes how n-grams were created.
+- **Model Tab**: Describes the prediction model.
+- **Markov Chain**: Describes the origin of this type of model.
+---
+
+# Stats Tab
+
+## Statistics
+- **Perplexity**: Calculated perplexity of the input text. 
+- **Entropy**: Calculated entropy of the predicted words.
+
+## Visualization
+- **Probability Plot**: Shows the probabilities of the top words in the 
+prediction list.
+- **Back-off Plot**: Shows the source n-grams for predicted words.
+
+---
+
+# Next Steps and Improvements
+
+## Future Enhancements:
+- Scaling up the model to use larger datasets.
+- Adding more advanced smoothing techniques.
+- Improving user interface with better error handling and styling.
+<br/><br/><br/>
+
+## Thank you for exploring the app!
+
+<br/><br/><br/><br/><br/>
+Developed by Doron Fingold, May 2025.
+
